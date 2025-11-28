@@ -1,0 +1,68 @@
+<h1 class="text-3xl font-bold text-purple-700 mb-6 text-center">
+  Episodios de Buffy
+</h1>
+
+<!-- Mensaje mientras carga -->
+@if (buffyService.buffy().length === 0) {
+
+  <p class="text-gray-500 text-lg text-center">Cargando datos...</p>
+
+} @else {
+
+  <!-- Contenedor general estilo Tailwind UI -->
+  <div class="bg-white shadow sm:rounded-lg border border-gray-200 max-w-4xl mx-auto">
+
+    <ul role="list" class="divide-y divide-gray-200">
+      @for (ep of buffyService.buffy(); track ep._id) {
+        <li class="hover:bg-purple-50 transition">
+          <div class="px-4 py-5 sm:px-6">
+
+            <div class="flex items-center justify-between">
+              <p class="text-lg font-semibold text-purple-800 truncate">
+                {{ ep.episodeName }}
+              </p>
+              <span class="px-3 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
+                Temporada {{ ep.seasonNumber }}
+              </span>
+            </div>
+
+            <div class="mt-3 sm:flex sm:justify-between">
+              <p class="text-sm text-gray-600">
+                <span class="font-medium text-gray-800">Episodio:</span>
+                {{ ep.episodeNumber }}
+              </p>
+              <p class="text-sm text-gray-600 mt-2 sm:mt-0">
+                <span class="font-medium text-gray-800">Fecha emisión:</span>
+                {{ ep.airDate }}
+              </p>
+            </div>
+
+            <p class="mt-3 text-sm text-gray-700 leading-snug">
+              {{ ep.description }}
+            </p>
+
+          </div>
+        </li>
+      }
+    </ul>
+  </div>
+
+}
+
+<!-- Botón para mostrar la gráfica -->
+<div class="text-center my-6">
+  <button 
+    (click)="toggleGrafica()"
+    class="px-6 py-2 rounded-lg bg-purple-600 text-white font-semibold hover:bg-purple-700 transition">
+    {{ mostrarGrafica() ? 'Ocultar gráfica' : 'Mostrar gráfica' }}
+  </button>
+</div>
+
+<!-- Mostrar el componente secundario SOLO SI mostrarGrafica() es TRUE -->
+@if (mostrarGrafica()) {
+  <h2 class="text-2xl font-bold mt-10 mb-4 text-purple-700 text-center">
+    Gráfica relacionada
+  </h2>
+
+  <app-secundario></app-secundario>
+}

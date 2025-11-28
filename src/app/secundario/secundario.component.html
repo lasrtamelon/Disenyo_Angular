@@ -1,0 +1,30 @@
+<div class="mt-10 max-w-5xl mx-auto">
+
+  <!-- CARD estilo Tailwind UI -->
+  <div class="bg-white border border-gray-200 shadow-lg rounded-xl p-6">
+
+    <!-- Título -->
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-2xl font-bold text-purple-700">
+        Evolución de Episodios
+      </h2>
+
+      <!-- Etiqueta estilo badge -->
+      <span class="px-3 py-1 text-xs font-semibold rounded-full bg-purple-100 text-purple-800">
+        Gráfica dinámica
+      </span>
+    </div>
+
+    <!-- Descripción -->
+    <p class="text-sm text-gray-600 mb-6">
+      Esta gráfica muestra la evolución de los episodios según su número dentro de la temporada,
+      utilizando los datos obtenidos de la API de Buffy.
+    </p>
+
+    <!-- Contenedor del canvas -->
+    <div class="w-full">
+      <canvas id="graficaBuffy" class="w-full h-80"></canvas>
+    </div>
+
+  </div>
+</div>
